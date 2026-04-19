@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Posting Schedule · May-July 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: #e0e0e0; min-height: 100vh; padding: 20px; line-height: 1.5; }
+.wrap { max-width: 1400px; margin: 0 auto; }
+
+/* HERO HEADER - big, bold, spacious */
+.hero { text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #0d2a1a 0%, #1a0d2a 100%); border-radius: 18px; border: 1px solid #22c55e40; margin-bottom: 24px; }
+.hero .label { font-size: 13px; color: #4ade80; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; font-weight: 600; }
+.hero h1 { font-size: 52px; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
+.hero .sub { font-size: 15px; color: #999; }
+
+/* TABS */
+.tabs { display: flex; gap: 0; margin-bottom: 32px; background: #12121e; padding: 8px; border-radius: 14px; }
+.tab { flex: 1; padding: 16px 24px; text-align: center; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; color: #666; transition: all 0.2s; }
+.tab.active { background: #1a1a2e; color: #fff; }
+.tab:hover:not(.active) { color: #aaa; }
+
+/* PANELS */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* SECTION */
+.section-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.section-title-ig { color: #fff; }
+.divider { height: 2px; background: #ec4899; margin-bottom: 16px; }
+.divider.fb { background: #1877f2; }
+.section-sub { font-size: 14px; color: #888; margin-bottom: 24px; }
+
+/* STAT CARDS - big, with colored left border */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.card { background: #12121e; border-radius: 14px; padding: 28px 24px; position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+.card.pink::before { background: #ec4899; }
+.card.blue::before { background: #1877f2; }
+.card.green::before { background: #4ade80; }
+.card-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600; }
+.card-val { font-size: 42px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
+.card-sub { font-size: 12px; color: #666; }
+
+/* Schedule table */
+.schedule-wrap { background: #12121e; border-radius: 14px; padding: 8px; overflow-x: auto; }
+.schedule-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 900px; }
+.schedule-table th { padding: 16px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+.schedule-table th.name-head { text-align: left; padding-left: 20px; color: #888; }
+.schedule-table th.ig-day { color: #ec4899; }
+.schedule-table th.fb-day { color: #60a5fa; }
+.schedule-table td { padding: 14px 8px; border-top: 1px solid #1a1a2e; text-align: center; font-size: 11px; }
+.schedule-table td.name { text-align: left; font-weight: 600; color: #fff; padding-left: 20px; font-size: 14px; }
+
+.cell { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cell-dot { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+.cell-time { font-size: 11px; font-weight: 600; line-height: 1.2; }
+.ig-cell .cell-dot { background: #ec4899; }
+.ig-cell .cell-time { color: #ec4899; }
+.fb-cell .cell-dot { background: #1877f2; }
+.fb-cell .cell-time { color: #60a5fa; }
+.rest { color: #2a2a3e; font-size: 20px; font-weight: 300; }
+
+/* Guidelines box */
+.guidelines { background: #12121e; border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
+.guidelines h3 { font-size: 15px; color: #facc15; margin-bottom: 14px; font-weight: 700; }
+.guidelines ul { list-style: none; padding: 0; }
+.guidelines li { font-size: 13px; color: #aaa; padding: 6px 0; padding-left: 22px; position: relative; }
+.guidelines li::before { content: "→"; position: absolute; left: 0; color: #facc15; font-weight: 700; }
+
+.footer { text-align: center; padding: 32px 0 16px; font-size: 11px; color: #444; }
+
+@media (max-width: 900px) {
+  .hero { padding: 40px 24px; }
+  .hero h1 { font-size: 32px; }
+  .card-val { font-size: 32px; }
+  .tab { padding: 12px 14px; font-size: 13px; }
+  .schedule-table { font-size: 10px; }
+  .schedule-table td.name { font-size: 12px; }
+  .cell-dot { width: 24px; height: 24px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO HEADER -->
+<div class="hero">
+  <div class="label">Weekly Posting Schedule</div>
+  <h1>May — July 2026</h1>
+  <div class="sub">Instagram + Facebook · All 11 pages · Based on 14 months of data</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('ig', this)">📸 Instagram</div>
+  <div class="tab" onclick="showTab('fb', this)">📘 Facebook</div>
+</div>
+
+<!-- INSTAGRAM PANEL -->
+<div class="panel active" id="ig">
+  <div class="section-title">📸 Instagram Weekly Schedule</div>
+  <div class="divider"></div>
+  <div class="section-sub">5 posts per week per page · Pink cells = post days · Each cell shows the 3-hour peak window for that day</div>
+
+  <div class="cards">
+    <div class="card pink">
+      <div class="card-label">Posts per page per week</div>
+      <div class="card-val">5</div>
+    </div>
+    <div class="card pink">
+      <div class="card-label">Total weekly posts</div>
+      <div class="card-val">55</div>
+      <div class="card-sub">11 pages × 5</div>
+    </div>
+    <div class="card pink">
+      <div class="card-label">3-month total</div>
+      <div class="card-val">715</div>
+      <div class="card-sub">13 weeks × 55</div>
+    </div>
+    <div class="card green">
+      <div class="card-label">Ramadan exception</div>
+      <div class="card-val">6/week</div>
+      <div class="card-sub">Ramadan = daily posting</div>
+    </div>
+  </div>
+
+  <div class="schedule-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th class="name-head">Account</th>
+          <th class="ig-day">Mon</th>
+          <th class="ig-day">Tue</th>
+          <th class="ig-day">Wed</th>
+          <th class="ig-day">Thu</th>
+          <th class="ig-day">Fri</th>
+          <th class="ig-day">Sat</th>
+          <th class="ig-day">Sun</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">🇮🇷 Persian</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇺🇿 Uzbek</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">05-08</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇵🇰 Urdu</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇷🇺 Russian</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">04-07</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇧🇩 Bangla</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">03-06</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">05-08</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🌍 Arabic</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇳 Hindi</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">03-06</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇩 Indonesian</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">02-05</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">02-05</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">03-06</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇩🇪 Deutsch</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">06-09</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇫🇷 Français</td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">08-11</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">11-14</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇪🇸 Español</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">09-12</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell ig-cell"><div class="cell-dot">P</div><span class="cell-time">10-13</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guidelines">
+    <h3>📸 Instagram Guidelines</h3>
+    <ul>
+      <li>Times in UTC format "10-13" means post between 10:00 and 13:00 UTC</li>
+      <li>The first hour of the window is usually the strongest</li>
+      <li>Content mix per week: 3 Reels + 1 Carousel + 1 Image post</li>
+      <li>Reel length sweet spot: 45-90 seconds</li>
+      <li>Always add subtitles from frame 1 (for sound-off viewers)</li>
+      <li>Every Reel needs a DM-share CTA — "Send this to..."</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FACEBOOK PANEL -->
+<div class="panel" id="fb">
+  <div class="section-title">📘 Facebook Weekly Schedule</div>
+  <div class="divider fb"></div>
+  <div class="section-sub">5 videos per week per page · Blue cells = post days · Each cell shows the 3-hour peak window for that day</div>
+
+  <div class="cards">
+    <div class="card blue">
+      <div class="card-label">Videos per page per week</div>
+      <div class="card-val">5</div>
+    </div>
+    <div class="card blue">
+      <div class="card-label">Total weekly videos</div>
+      <div class="card-val">55</div>
+      <div class="card-sub">11 pages × 5</div>
+    </div>
+    <div class="card blue">
+      <div class="card-label">3-month total</div>
+      <div class="card-val">715</div>
+      <div class="card-sub">13 weeks × 55</div>
+    </div>
+    <div class="card green">
+      <div class="card-label">Exception pages</div>
+      <div class="card-val">3/week</div>
+      <div class="card-sub">Russian + Deutsch (reduced)</div>
+    </div>
+  </div>
+
+  <div class="schedule-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th class="name-head">Account</th>
+          <th class="fb-day">Mon</th>
+          <th class="fb-day">Tue</th>
+          <th class="fb-day">Wed</th>
+          <th class="fb-day">Thu</th>
+          <th class="fb-day">Fri</th>
+          <th class="fb-day">Sat</th>
+          <th class="fb-day">Sun</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">🇧🇩 Bangla</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">08-11</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">02-05</span></div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇵🇰 Urdu</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">03-06</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">04-07</span></div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇷 Persian</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">03-06</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">04-07</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🌍 Arabic</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">10-13</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">10-13</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇳 Hindi</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">01-04</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">03-06</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">03-06</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">02-05</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">01-04</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇺🇿 Uzbek</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">00-03</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇩 Indonesian</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">00-03</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">04-07</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">00-03</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">08-11</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇫🇷 Français</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">10-13</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">09-12</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇪🇸 Español</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">08-11</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">01-04</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">08-11</span></div></td>
+        </tr>
+        <tr>
+          <td class="name">🇩🇪 Deutsch</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">05-08</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">07-10</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇷🇺 Russian</td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">06-09</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell fb-cell"><div class="cell-dot">F</div><span class="cell-time">08-11</span></div></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guidelines">
+    <h3>📘 Facebook Guidelines</h3>
+    <ul>
+      <li>Times in UTC format "07-10" means post between 7:00 and 10:00 UTC</li>
+      <li>The first hour of the window is usually strongest</li>
+      <li>Bangla + Urdu: 60-90s long-form videos (best retention)</li>
+      <li>Arabic + Uzbek: 15-30s short clips (retention crisis — shorter helps)</li>
+      <li>All FB videos need strong thumbnails</li>
+      <li>Post vertically (9:16) — all new FB videos are Reels by default</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TIMEZONE REFERENCE -->
+<div class="guidelines">
+  <h3>🌍 Time Zone Quick Reference (convert UTC to local)</h3>
+  <ul>
+    <li>Pakistan / Uzbekistan = UTC + 5</li>
+    <li>Bangladesh = UTC + 6</li>
+    <li>Iran = UTC + 3:30</li>
+    <li>Saudi Arabia = UTC + 3</li>
+    <li>India = UTC + 5:30</li>
+    <li>Indonesia (Jakarta) = UTC + 7</li>
+    <li>Russia (Moscow) = UTC + 3</li>
+    <li>Germany = UTC + 1</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Towards Eternity · Weekly Posting Schedule · Peak 3-hour windows based on 14 months of actual data
+</div>
+
+</div>
+
+<script>
+function showTab(tabName, element) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabName).classList.add('active');
+  element.classList.add('active');
+}
+</script>
+
+</body>
+</html>
