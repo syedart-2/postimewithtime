@@ -6,123 +6,374 @@
 <title>Weekly Posting Schedule · May-July 2026</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: #e0e0e0; min-height: 100vh; padding: 20px; line-height: 1.5; }
-.wrap { max-width: 1400px; margin: 0 auto; }
+:root {
+  --bg: #0a0a14;
+  --card: #12121e;
+  --card-elevated: #1a1a2e;
+  --border: #1f1f35;
+  --text: #e8e8f0;
+  --text-dim: #8b8b9e;
+  --text-muted: #4a4a5e;
+  --pink: #ec4899;
+  --pink-dim: #ec489930;
+  --blue: #60a5fa;
+  --blue-dim: #60a5fa30;
+  --green: #4ade80;
+  --green-dim: #4ade8030;
+  --yellow: #facc15;
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1280px; margin: 0 auto; }
 
-/* HERO HEADER - big, bold, spacious */
-.hero { text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #0d2a1a 0%, #1a0d2a 100%); border-radius: 18px; border: 1px solid #22c55e40; margin-bottom: 24px; }
-.hero .label { font-size: 13px; color: #4ade80; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; font-weight: 600; }
-.hero h1 { font-size: 52px; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
-.hero .sub { font-size: 15px; color: #999; }
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 56px 40px;
+  background: linear-gradient(135deg, rgba(13, 42, 26, 0.6) 0%, rgba(26, 13, 42, 0.6) 100%);
+  border-radius: 20px;
+  border: 1px solid var(--green-dim);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(74, 222, 128, 0.08), transparent 50%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 12px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  position: relative;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+.hero-sub { font-size: 14px; color: var(--text-dim); position: relative; }
 
 /* TABS */
-.tabs { display: flex; gap: 0; margin-bottom: 32px; background: #12121e; padding: 8px; border-radius: 14px; }
-.tab { flex: 1; padding: 16px 24px; text-align: center; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; color: #666; transition: all 0.2s; }
-.tab.active { background: #1a1a2e; color: #fff; }
-.tab:hover:not(.active) { color: #aaa; }
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+  background: var(--card);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.tab {
+  flex: 1;
+  padding: 14px 20px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.tab:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.02); }
+.tab.active { background: var(--card-elevated); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.tab-ig.active { color: var(--pink); }
+.tab-fb.active { color: var(--blue); }
+.tab-combined.active { color: var(--green); }
 
 /* PANELS */
-.panel { display: none; }
+.panel { display: none; animation: fadeIn 0.3s ease; }
 .panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 /* SECTION */
-.section-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.section-title-ig { color: #fff; }
-.divider { height: 2px; background: #ec4899; margin-bottom: 16px; }
-.divider.fb { background: #1877f2; }
-.section-sub { font-size: 14px; color: #888; margin-bottom: 24px; }
+.section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.section-title { font-size: 22px; font-weight: 700; color: #fff; }
+.divider { height: 2px; margin-bottom: 18px; border-radius: 2px; }
+.divider-pink { background: linear-gradient(90deg, var(--pink), transparent); }
+.divider-blue { background: linear-gradient(90deg, var(--blue), transparent); }
+.divider-green { background: linear-gradient(90deg, var(--green), transparent); }
+.section-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
 
-/* STAT CARDS - big, with colored left border */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
-.card { background: #12121e; border-radius: 14px; padding: 28px 24px; position: relative; overflow: hidden; }
-.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
-.card.pink::before { background: #ec4899; }
-.card.blue::before { background: #1877f2; }
-.card.green::before { background: #4ade80; }
-.card-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600; }
-.card-val { font-size: 42px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
-.card-sub { font-size: 12px; color: #666; }
+/* STAT CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  border: 1px solid var(--border);
+}
+.card:hover { transform: translateY(-2px); }
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.card-pink::before { background: var(--pink); }
+.card-blue::before { background: var(--blue); }
+.card-green::before { background: var(--green); }
+.card-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.card-val { font-size: 38px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 6px; letter-spacing: -0.5px; }
+.card-sub { font-size: 12px; color: var(--text-muted); }
 
-/* Schedule table */
-.schedule-wrap { background: #12121e; border-radius: 14px; padding: 8px; overflow-x: auto; }
-.schedule-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 900px; }
-.schedule-table th { padding: 16px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
-.schedule-table th.name-head { text-align: left; padding-left: 20px; color: #888; }
-.schedule-table th.ig-day { color: #ec4899; }
-.schedule-table th.fb-day { color: #60a5fa; }
-.schedule-table td { padding: 14px 8px; border-top: 1px solid #1a1a2e; text-align: center; font-size: 11px; }
-.schedule-table td.name { text-align: left; font-weight: 600; color: #fff; padding-left: 20px; font-size: 14px; }
+/* Schedule Table */
+.schedule-wrap {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+.schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+  min-width: 900px;
+}
+.schedule-table thead th {
+  padding: 16px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.02);
+}
+.schedule-table th.name-head { text-align: left; padding-left: 20px; color: var(--text-dim); }
+.schedule-table th.day-pink { color: var(--pink); }
+.schedule-table th.day-blue { color: var(--blue); }
+.schedule-table thead th:first-child { border-radius: 10px 0 0 10px; }
+.schedule-table thead th:last-child { border-radius: 0 10px 10px 0; }
+.schedule-table tbody td {
+  padding: 14px 8px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 11px;
+  vertical-align: middle;
+}
+.schedule-table td.name {
+  text-align: left;
+  font-weight: 600;
+  color: #fff;
+  padding-left: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
 
-.cell { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.cell-dot { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+/* Cell styles */
+.cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+.cell:hover { background: rgba(255,255,255,0.02); }
+.cell-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 .cell-time { font-size: 11px; font-weight: 600; line-height: 1.2; }
-.ig-cell .cell-dot { background: #ec4899; }
-.ig-cell .cell-time { color: #ec4899; }
-.fb-cell .cell-dot { background: #1877f2; }
-.fb-cell .cell-time { color: #60a5fa; }
-.rest { color: #2a2a3e; font-size: 20px; font-weight: 300; }
+.ig-cell .cell-dot { background: linear-gradient(135deg, var(--pink), #d63384); }
+.ig-cell .cell-time { color: var(--pink); }
+.fb-cell .cell-dot { background: linear-gradient(135deg, var(--blue), #4a8ee0); }
+.fb-cell .cell-time { color: var(--blue); }
+.rest { color: var(--text-muted); font-size: 22px; font-weight: 300; }
 
-/* Guidelines box */
-.guidelines { background: #12121e; border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
-.guidelines h3 { font-size: 15px; color: #facc15; margin-bottom: 14px; font-weight: 700; }
+/* Combined view - stacked dots */
+.cell-combined {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+}
+.cell-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.cell-small-dot {
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  min-width: 42px;
+}
+.cell-small-dot.ig { background: var(--pink); }
+.cell-small-dot.fb { background: var(--blue); }
+.cell-small-time { font-size: 9px; font-weight: 600; line-height: 1; }
+.cell-small-time.ig { color: var(--pink); }
+.cell-small-time.fb { color: var(--blue); }
+
+/* Guidelines */
+.guidelines {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-top: 24px;
+  border: 1px solid var(--border);
+}
+.guidelines h3 {
+  font-size: 15px;
+  color: var(--yellow);
+  margin-bottom: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .guidelines ul { list-style: none; padding: 0; }
-.guidelines li { font-size: 13px; color: #aaa; padding: 6px 0; padding-left: 22px; position: relative; }
-.guidelines li::before { content: "→"; position: absolute; left: 0; color: #facc15; font-weight: 700; }
+.guidelines li {
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 6px 0;
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.6;
+}
+.guidelines li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--yellow);
+  font-weight: 700;
+}
 
-.footer { text-align: center; padding: 32px 0 16px; font-size: 11px; color: #444; }
+/* Legend */
+.legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 14px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); }
+.legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+.legend-dot.ig { background: var(--pink); }
+.legend-dot.fb { background: var(--blue); }
 
+.footer {
+  text-align: center;
+  padding: 32px 0 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Mobile */
 @media (max-width: 900px) {
-  .hero { padding: 40px 24px; }
-  .hero h1 { font-size: 32px; }
-  .card-val { font-size: 32px; }
-  .tab { padding: 12px 14px; font-size: 13px; }
+  body { padding: 16px 12px; }
+  .hero { padding: 36px 20px; }
+  .hero h1 { font-size: 30px; }
+  .hero-label { font-size: 10px; letter-spacing: 2px; }
+  .tab { padding: 10px 12px; font-size: 12px; }
+  .card { padding: 18px; }
+  .card-val { font-size: 28px; }
   .schedule-table { font-size: 10px; }
-  .schedule-table td.name { font-size: 12px; }
+  .schedule-table td.name { font-size: 12px; padding-left: 12px; }
   .cell-dot { width: 24px; height: 24px; font-size: 10px; }
+  .cell-time { font-size: 10px; }
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- HERO HEADER -->
+<!-- HERO -->
 <div class="hero">
-  <div class="label">Weekly Posting Schedule</div>
+  <div class="hero-label">Weekly Posting Schedule</div>
   <h1>May — July 2026</h1>
-  <div class="sub">Instagram + Facebook · All 11 pages · Based on 14 months of data</div>
+  <div class="hero-sub">Instagram + Facebook · All 11 pages · Based on 14 months of data</div>
 </div>
 
 <!-- TABS -->
 <div class="tabs">
-  <div class="tab active" onclick="showTab('ig', this)">📸 Instagram</div>
-  <div class="tab" onclick="showTab('fb', this)">📘 Facebook</div>
+  <div class="tab tab-ig active" onclick="showTab('ig', this)">📸 Instagram</div>
+  <div class="tab tab-fb" onclick="showTab('fb', this)">📘 Facebook</div>
+  <div class="tab tab-combined" onclick="showTab('combined', this)">🔄 Combined</div>
 </div>
 
 <!-- INSTAGRAM PANEL -->
 <div class="panel active" id="ig">
-  <div class="section-title">📸 Instagram Weekly Schedule</div>
-  <div class="divider"></div>
-  <div class="section-sub">5 posts per week per page · Pink cells = post days · Each cell shows the 3-hour peak window for that day</div>
+  <div class="section-header">
+    <div class="section-title">📸 Instagram Schedule</div>
+  </div>
+  <div class="divider divider-pink"></div>
+  <div class="section-sub">5 posts per week per page · Pink cells = post days · Each cell shows the 3-hour peak window for that day (UTC)</div>
 
   <div class="cards">
-    <div class="card pink">
-      <div class="card-label">Posts per page per week</div>
+    <div class="card card-pink">
+      <div class="card-label">Posts per page · week</div>
       <div class="card-val">5</div>
     </div>
-    <div class="card pink">
+    <div class="card card-pink">
       <div class="card-label">Total weekly posts</div>
       <div class="card-val">55</div>
       <div class="card-sub">11 pages × 5</div>
     </div>
-    <div class="card pink">
+    <div class="card card-pink">
       <div class="card-label">3-month total</div>
       <div class="card-val">715</div>
       <div class="card-sub">13 weeks × 55</div>
     </div>
-    <div class="card green">
+    <div class="card card-green">
       <div class="card-label">Ramadan exception</div>
       <div class="card-val">6/week</div>
-      <div class="card-sub">Ramadan = daily posting</div>
+      <div class="card-sub">Daily posting during Ramadan</div>
     </div>
   </div>
 
@@ -131,13 +382,13 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: 
       <thead>
         <tr>
           <th class="name-head">Account</th>
-          <th class="ig-day">Mon</th>
-          <th class="ig-day">Tue</th>
-          <th class="ig-day">Wed</th>
-          <th class="ig-day">Thu</th>
-          <th class="ig-day">Fri</th>
-          <th class="ig-day">Sat</th>
-          <th class="ig-day">Sun</th>
+          <th class="day-pink">Mon</th>
+          <th class="day-pink">Tue</th>
+          <th class="day-pink">Wed</th>
+          <th class="day-pink">Thu</th>
+          <th class="day-pink">Fri</th>
+          <th class="day-pink">Sat</th>
+          <th class="day-pink">Sun</th>
         </tr>
       </thead>
       <tbody>
@@ -258,11 +509,11 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: 
   <div class="guidelines">
     <h3>📸 Instagram Guidelines</h3>
     <ul>
-      <li>Times in UTC format "10-13" means post between 10:00 and 13:00 UTC</li>
+      <li>Times in UTC — format "10-13" means post between 10:00 and 13:00 UTC</li>
       <li>The first hour of the window is usually the strongest</li>
       <li>Content mix per week: 3 Reels + 1 Carousel + 1 Image post</li>
       <li>Reel length sweet spot: 45-90 seconds</li>
-      <li>Always add subtitles from frame 1 (for sound-off viewers)</li>
+      <li>Always add subtitles from frame 1 for sound-off viewers</li>
       <li>Every Reel needs a DM-share CTA — "Send this to..."</li>
     </ul>
   </div>
@@ -270,26 +521,28 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: 
 
 <!-- FACEBOOK PANEL -->
 <div class="panel" id="fb">
-  <div class="section-title">📘 Facebook Weekly Schedule</div>
-  <div class="divider fb"></div>
-  <div class="section-sub">5 videos per week per page · Blue cells = post days · Each cell shows the 3-hour peak window for that day</div>
+  <div class="section-header">
+    <div class="section-title">📘 Facebook Schedule</div>
+  </div>
+  <div class="divider divider-blue"></div>
+  <div class="section-sub">5 videos per week per page · Blue cells = post days · Each cell shows the 3-hour peak window for that day (UTC)</div>
 
   <div class="cards">
-    <div class="card blue">
-      <div class="card-label">Videos per page per week</div>
+    <div class="card card-blue">
+      <div class="card-label">Videos per page · week</div>
       <div class="card-val">5</div>
     </div>
-    <div class="card blue">
+    <div class="card card-blue">
       <div class="card-label">Total weekly videos</div>
       <div class="card-val">55</div>
       <div class="card-sub">11 pages × 5</div>
     </div>
-    <div class="card blue">
+    <div class="card card-blue">
       <div class="card-label">3-month total</div>
       <div class="card-val">715</div>
       <div class="card-sub">13 weeks × 55</div>
     </div>
-    <div class="card green">
+    <div class="card card-green">
       <div class="card-label">Exception pages</div>
       <div class="card-val">3/week</div>
       <div class="card-sub">Russian + Deutsch (reduced)</div>
@@ -301,13 +554,13 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: 
       <thead>
         <tr>
           <th class="name-head">Account</th>
-          <th class="fb-day">Mon</th>
-          <th class="fb-day">Tue</th>
-          <th class="fb-day">Wed</th>
-          <th class="fb-day">Thu</th>
-          <th class="fb-day">Fri</th>
-          <th class="fb-day">Sat</th>
-          <th class="fb-day">Sun</th>
+          <th class="day-blue">Mon</th>
+          <th class="day-blue">Tue</th>
+          <th class="day-blue">Wed</th>
+          <th class="day-blue">Thu</th>
+          <th class="day-blue">Fri</th>
+          <th class="day-blue">Sat</th>
+          <th class="day-blue">Sun</th>
         </tr>
       </thead>
       <tbody>
@@ -428,12 +681,359 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0a0a14; color: 
   <div class="guidelines">
     <h3>📘 Facebook Guidelines</h3>
     <ul>
-      <li>Times in UTC format "07-10" means post between 7:00 and 10:00 UTC</li>
-      <li>The first hour of the window is usually strongest</li>
-      <li>Bangla + Urdu: 60-90s long-form videos (best retention)</li>
-      <li>Arabic + Uzbek: 15-30s short clips (retention crisis — shorter helps)</li>
+      <li>Times in UTC — format "07-10" means post between 7:00 and 10:00 UTC</li>
+      <li>Bangla + Urdu: 60-90s long-form (best retention)</li>
+      <li>Arabic + Uzbek: 15-30s short clips (shorter helps fix retention)</li>
       <li>All FB videos need strong thumbnails</li>
       <li>Post vertically (9:16) — all new FB videos are Reels by default</li>
+    </ul>
+  </div>
+</div>
+
+<!-- COMBINED PANEL -->
+<div class="panel" id="combined">
+  <div class="section-header">
+    <div class="section-title">🔄 Combined Schedule</div>
+  </div>
+  <div class="divider divider-green"></div>
+  <div class="section-sub">Both platforms in one view · Each cell shows IG + FB together with their peak times (UTC)</div>
+
+  <div class="cards">
+    <div class="card card-green">
+      <div class="card-label">Total weekly posts</div>
+      <div class="card-val">110</div>
+      <div class="card-sub">IG 55 + FB 55</div>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">Per language team</div>
+      <div class="card-val">10/wk</div>
+      <div class="card-sub">5 IG + 5 FB per page</div>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">3-month total</div>
+      <div class="card-val">1,430</div>
+      <div class="card-sub">13 weeks × 110</div>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">Daily average</div>
+      <div class="card-val">~16</div>
+      <div class="card-sub">Across all 11 pages</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot ig"></div>Instagram</div>
+    <div class="legend-item"><div class="legend-dot fb"></div>Facebook</div>
+    <div class="legend-item">· Rest day</div>
+  </div>
+
+  <div class="schedule-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th class="name-head">Account</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">🇮🇷 Persian</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">03-06</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">04-07</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇺🇿 Uzbek</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">00-03</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">05-08</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇵🇰 Urdu</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">03-06</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">04-07</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+        </tr>
+        <tr>
+          <td class="name">🇷🇺 Russian</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">08-11</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">04-07</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇧🇩 Bangla</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">08-11</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">03-06</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">05-08</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">02-05</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🌍 Arabic</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">10-13</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">10-13</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇳 Hindi</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">05-08</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">01-04</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">03-06</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">03-06</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">03-06</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">02-05</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">01-04</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇮🇩 Indonesian</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">00-03</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">02-05</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">04-07</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">02-05</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">00-03</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">03-06</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">08-11</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇩🇪 Deutsch</td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">05-08</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">06-09</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇫🇷 Français</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">08-11</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">06-09</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">11-14</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">10-13</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">09-12</span></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="name">🇪🇸 Español</td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">08-11</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">09-12</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">01-04</span></div>
+          </div></td>
+          <td><span class="rest">·</span></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">07-10</span></div>
+          </div></td>
+          <td><div class="cell-combined">
+            <div class="cell-pair"><span class="cell-small-dot ig">IG</span><span class="cell-small-time ig">10-13</span></div>
+            <div class="cell-pair"><span class="cell-small-dot fb">FB</span><span class="cell-small-time fb">08-11</span></div>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guidelines">
+    <h3>🔄 Team Coordination</h3>
+    <ul>
+      <li>Each language content manager handles 10 posts/week (5 IG + 5 FB)</li>
+      <li>Creative team (video editor + graphic designer) supports all languages</li>
+      <li>Community manager handles engagement and DM responses</li>
+      <li>Weekly strategy review every Monday to adjust next week's plan</li>
+      <li>Do not cross-post blindly — IG and FB audiences are different</li>
     </ul>
   </div>
 </div>
